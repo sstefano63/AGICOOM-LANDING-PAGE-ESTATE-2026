@@ -4,6 +4,12 @@ Landing statica per acquisizione lead locali da campagne Meta Ads.
 
 Dominio consigliato: `https://analisi.agicoom.com`
 
+## Pubblicazione
+
+Il file `CNAME` configura GitHub Pages per il dominio personalizzato `analisi.agicoom.com`.
+
+DNS Aruba consigliato: record CNAME `analisi` verso `sstefano63.github.io`.
+
 ## File principali
 
 - `index.html`: landing principale
