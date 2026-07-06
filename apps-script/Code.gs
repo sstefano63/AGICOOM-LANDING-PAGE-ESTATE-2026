@@ -64,29 +64,43 @@ function sendLeadConfirmation_(payload) {
 
   var nome = firstName_(payload.nome);
   var greeting = nome ? 'Ciao ' + nome + ',' : 'Ciao,';
+  var plainBody = [
+    greeting,
+    '',
+    "grazie per aver richiesto l'analisi gratuita della tua presenza online.",
+    '',
+    'Abbiamo ricevuto i tuoi dati e ti ricontatteremo a breve per un primo confronto rapido e concreto sulla visibilita della tua attivita nelle province di Vercelli, Biella e Novara.',
+    '',
+    'Durante il check guarderemo insieme alcuni elementi chiave: presenza su Google, sito, social e reputazione online.',
+    '',
+    'Se preferisci anticiparci qualcosa, puoi rispondere direttamente a questa email oppure scriverci su WhatsApp al ' + WHATSAPP_PHONE + '.',
+    WHATSAPP_URL,
+    '',
+    'A presto,',
+    'AGICOOM',
+    'Comunicazione Efficace'
+  ].join('\n');
 
   safeSendEmail_({
     to: email,
     subject: 'Abbiamo ricevuto la tua richiesta di analisi gratuita',
     name: CONFIRMATION_FROM_NAME,
     replyTo: REPLY_TO_EMAIL,
-    body: [
-      greeting,
-      '',
-      "grazie per aver richiesto l'analisi gratuita della tua presenza online.",
-      '',
-      "Abbiamo ricevuto i tuoi dati e ti ricontatteremo a breve per un primo confronto rapido e concreto sulla visibilità della tua attività nelle province di Vercelli, Biella e Novara.",
-      '',
-      'Durante il check guarderemo insieme alcuni elementi chiave: presenza su Google, sito, social e reputazione online.',
-      '',
-      'Se preferisci anticiparci qualcosa, puoi rispondere direttamente a questa email oppure scriverci su WhatsApp al ' + WHATSAPP_PHONE + '.',
-      WHATSAPP_URL,
-      '',
-      'A presto,',
-      'AGICOOM',
-      'Comunicazione Efficace'
-    ].join('\n')
+    body: plainBody,
+    htmlBody: confirmationHtmlBody_(greeting)
   });
+}
+
+function confirmationHtmlBody_(greeting) {
+  return [
+    '<p>' + escapeHtml_(greeting) + '</p>',
+    "<p>grazie per aver richiesto l'analisi gratuita della tua presenza online.</p>",
+    '<p>Abbiamo ricevuto i tuoi dati e ti ricontatteremo a breve per un primo confronto rapido e concreto sulla visibilit&agrave; della tua attivit&agrave; nelle province di Vercelli, Biella e Novara.</p>',
+    '<p>Durante il check guarderemo insieme alcuni elementi chiave: presenza su Google, sito, social e reputazione online.</p>',
+    '<p>Se preferisci anticiparci qualcosa, puoi rispondere direttamente a questa email oppure scriverci su WhatsApp al ' + WHATSAPP_PHONE + '.</p>',
+    '<p><a href="' + WHATSAPP_URL + '">' + WHATSAPP_URL + '</a></p>',
+    '<p>A presto,<br>AGICOOM<br>Comunicazione Efficace</p>'
+  ].join('');
 }
 
 function safeSendEmail_(message) {
@@ -103,6 +117,15 @@ function isEmail_(value) {
 
 function firstName_(value) {
   return clean_(value).split(/\s+/)[0];
+}
+
+function escapeHtml_(value) {
+  return clean_(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 }
 
 function clean_(value) {
