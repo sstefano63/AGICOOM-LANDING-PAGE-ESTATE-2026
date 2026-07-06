@@ -3,7 +3,7 @@
 
   var CONFIG = {
     metaPixelId: "1715327215350220",
-    appsScriptUrl: "",
+    appsScriptUrl: "https://script.google.com/macros/s/AKfycbwYYQpraYLMoIRTjd7Qnf0G4HSmc1Yk5CRTxegA67aBUqj-deiyMfZGjb-wq2OC4OHh2g/exec",
     thankYouUrl: "grazie.html",
     whatsappNumber: "393490646346",
     whatsappMessage: "Ciao AGICOOM, vorrei richiedere l'analisi gratuita della mia presenza online."
