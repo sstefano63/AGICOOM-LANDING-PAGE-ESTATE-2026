@@ -33,6 +33,8 @@ Campi lead: Nome, Telefono obbligatorio, Email opzionale, Nome attivita, Comune,
 5. Copiare l'URL Web App generato.
 6. Inserire l'URL in `script.js`, dentro `CONFIG.appsScriptUrl`.
 
+Lo script invia una email transazionale di conferma al lead solo se il campo Email e' compilato e valido. Dopo modifiche a `apps-script/Code.gs`, creare una nuova versione del deployment Apps Script e autorizzare anche l'invio email.
+
 ## Meta Pixel
 
 Pixel ID configurato: `1715327215350220`.
