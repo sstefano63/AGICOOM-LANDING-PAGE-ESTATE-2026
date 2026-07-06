@@ -5,6 +5,7 @@ var REPLY_TO_EMAIL = 'info@agicoom.it';
 var CONFIRMATION_FROM_NAME = 'AGICOOM';
 var WHATSAPP_PHONE = '349 064 6346';
 var WHATSAPP_URL = 'https://wa.me/393490646346';
+var LOGO_URL = 'https://analisi.agicoom.com/assets/agicoom-logo.png';
 
 function doPost(e) {
   var lock = LockService.getScriptLock();
@@ -92,14 +93,27 @@ function sendLeadConfirmation_(payload) {
 }
 
 function confirmationHtmlBody_(greeting) {
+  var containerStyle = 'margin:0;padding:0;background:#ffffff;color:#252121;font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:1.55;';
+  var innerStyle = 'max-width:620px;margin:0 auto;padding:24px 0;';
+  var paragraphStyle = 'margin:0 0 16px;';
+  var buttonStyle = 'display:inline-block;background:#25D366;color:#ffffff;text-decoration:none;padding:12px 18px;border-radius:6px;font-weight:bold;font-family:Arial,Helvetica,sans-serif;';
+  var iconStyle = 'display:inline-block;width:18px;height:18px;line-height:18px;border-radius:50%;background:#ffffff;color:#25D366;text-align:center;font-weight:bold;margin-right:8px;';
+
   return [
-    '<p>' + escapeHtml_(greeting) + '</p>',
-    "<p>grazie per aver richiesto l'analisi gratuita della tua presenza online.</p>",
-    '<p>Abbiamo ricevuto i tuoi dati e ti ricontatteremo a breve per un primo confronto rapido e concreto sulla visibilit&agrave; della tua attivit&agrave; nelle province di Vercelli, Biella e Novara.</p>',
-    '<p>Durante il check guarderemo insieme alcuni elementi chiave: presenza su Google, sito, social e reputazione online.</p>',
-    '<p>Se preferisci anticiparci qualcosa, puoi rispondere direttamente a questa email oppure scriverci su WhatsApp al ' + WHATSAPP_PHONE + '.</p>',
-    '<p><a href="' + WHATSAPP_URL + '">' + WHATSAPP_URL + '</a></p>',
-    '<p>A presto,<br>AGICOOM<br>Comunicazione Efficace</p>'
+    '<div style="' + containerStyle + '">',
+    '<div style="' + innerStyle + '">',
+    '<p style="' + paragraphStyle + '">' + escapeHtml_(greeting) + '</p>',
+    '<p style="' + paragraphStyle + '">grazie per aver richiesto l&apos;analisi gratuita della tua presenza online.</p>',
+    '<p style="' + paragraphStyle + '">Abbiamo ricevuto i tuoi dati e ti ricontatteremo a breve per un primo confronto rapido e concreto sulla visibilit&agrave; della tua attivit&agrave; nelle province di Vercelli, Biella e Novara.</p>',
+    '<p style="' + paragraphStyle + '">Durante il check guarderemo insieme alcuni elementi chiave: presenza su Google, sito, social e reputazione online.</p>',
+    '<p style="margin:24px 0;"><a href="' + WHATSAPP_URL + '" style="' + buttonStyle + '"><span style="' + iconStyle + '">&#9742;</span>Scrivici su WhatsApp</a></p>',
+    '<p style="' + paragraphStyle + '">Se preferisci anticiparci qualcosa, puoi rispondere direttamente a questa email.</p>',
+    '<div style="margin-top:28px;padding-top:18px;border-top:1px solid #e7e0da;">',
+    '<img src="' + LOGO_URL + '" width="190" alt="AGICOOM Comunicazione Efficace" style="display:block;width:190px;max-width:100%;height:auto;margin:0 0 8px;">',
+    '<div style="font-size:13px;color:#6d625c;">Comunicazione Efficace</div>',
+    '</div>',
+    '</div>',
+    '</div>'
   ].join('');
 }
 
