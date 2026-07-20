@@ -381,6 +381,7 @@ h3 {
   font-size: clamp(2.6rem, 13vw, 5.2rem);
   line-height: 0.9;
   letter-spacing: 0;
+  color: var(--accent);
 }
 
 .counter-grid span {
@@ -388,6 +389,10 @@ h3 {
   margin-top: 10px;
   color: #e8e0da;
   font-weight: 800;
+}
+
+.counter-grid .counter-highlight {
+  color: var(--accent);
 }
 
 .form-section {
